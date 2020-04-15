@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/knourek_calendar.iml" filepath="$PROJECT_DIR$/knourek_calendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/knourek_Calendar.iml" filepath="$PROJECT_DIR$/knourek_Calendar.iml" />
     </modules>
   </component>
 </project>
