@@ -2,11 +2,7 @@ package cz.tul.knourekdaniel.ALG2.comparingstudents;
 
 import cz.tul.knourekdaniel.ALG2.comparingstudents.mycomparing.MyComparing;
 import java.text.Collator;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 /**
  * Vyuziti metody sort z tridy Arrays nebo Collections a interface Comparable
@@ -15,8 +11,11 @@ import java.util.Locale;
 public class Comparing {
     public static void main(String[] args) {
         Student[] students = Datasource.loadDataAsArray();
-        //TODO pridat studentum znamky
-        
+        students[2].addGrade((double) 5);
+        students[2].addGrade((double) 5);
+        students[2].addGrade((double) 5);
+        students[1].addGrade((double) 2);
+        students[0].addGrade((double) 3);
         //test shodnosti objektu - chceme: nemusi byt stejny objekt, staci, kdyz ma stejna data
         System.out.println(students[0].equals(students[1]));
         
@@ -50,7 +49,18 @@ public class Comparing {
         
         //Arrays.sort(students, (Student o1, Student o2) -> o1.getLastName().compareTo(o2.getLastName()) //lambda vyraz
         //); 
-        
-        //TODO setridit podle prumeru
+
+        for (Student student : students) {
+            System.out.println(student.getAverage());
+        }
+
+        System.out.println("Sort by average");
+        Arrays.sort(students, new ComparatorByAverage());
+
+        MyComparing.print(students);
+
+        for (Student student : students) {
+            System.out.println(student.getAverage());
+        }
     }
 }

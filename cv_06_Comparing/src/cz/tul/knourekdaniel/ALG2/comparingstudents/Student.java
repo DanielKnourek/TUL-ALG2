@@ -1,6 +1,8 @@
 package cz.tul.knourekdaniel.ALG2.comparingstudents;
 
 import cz.tul.knourekdaniel.ALG2.comparingstudents.mycomparing.CompareInterface;
+
+import java.util.ArrayList;
 import java.util.Objects;
 
 /**
@@ -11,7 +13,7 @@ public class Student implements CompareInterface, Comparable<Student>{
     private String firstName;
     private String lastName;
     private int studentNumber;
-    //TODO pole znamek
+    ArrayList<Double> grades = new ArrayList<>();
 
     public Student(String firstName, String lastName, int studentNumber) {
         this.firstName = firstName;
@@ -30,8 +32,19 @@ public class Student implements CompareInterface, Comparable<Student>{
     public int getStudentNumber() {
         return studentNumber;
     }
-    
-    //TODO calculateAverage
+
+    public double getAverage(){
+        double average = 0;
+        for (Double grade : grades) {
+            average += grade;
+        }
+        return (grades.size() > 0) ? (average / grades.size()) : 0;
+    }
+    protected void addGrade(Double grade){
+        if (grade >= 1 && grade <= 5){
+            grades.add(grade);
+        }
+    }
     
     @Override
     public String toString() {
