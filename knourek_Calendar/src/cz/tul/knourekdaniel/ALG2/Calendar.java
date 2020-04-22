@@ -11,6 +11,7 @@ public class Calendar {
     private int day = 1;
     private int month = 1;
     private int year = 2000;
+    private int[] offset = new int[]{0,0,0};
 
     private Calendar(int day, int month, int year){
         this.day = day;
@@ -70,6 +71,12 @@ public class Calendar {
 
         return length;
     }
+    public void previousMonth(){
+        offset[1] = ((offset[1]-1) % 12);
+    }
+    public void nextMonth(){
+        offset[1] = ((offset[1]+1) % 12);
+    }
 
     public String getCurrentDayOfWeek(){
         return days[DayOfWeek(this.day, this.month, this.year)];
@@ -97,18 +104,21 @@ public class Calendar {
     }
 
     public String showCurrentMonth(){
+        int y = this.year + offset[0];
+        int m = this.month + offset[1];
+        int d = this.day + offset[2];
         StringBuilder tableView = new StringBuilder();
-        tableView.append(String.format("%22s",months[month-1])).append("\r\n");
+        tableView.append(String.format("%22s",(months[m-1] +"|"+ y))).append("\r\n");
         tableView.append("|");
-        for (String d : daysShort) {
-            tableView.append(d).append("|");
+        for (String day : daysShort) {
+            tableView.append(day).append("|");
         }
         tableView.append("\r\n");
 
         String[] cells = new String[42];
         Arrays.fill(cells, "  ");
-        int r = DayOfWeek(1, this.month, this.year);
-        for (int i = r; i < lengthOfMonth(this.month, this.year) + r; i++) {
+        int r = DayOfWeek(1, m, y);
+        for (int i = r; i < lengthOfMonth(m, y) + r; i++) {
             cells[i] = String.format("%2d",(i - r + 1));
         }
         for (int i = 0; i < cells.length; i++) {
@@ -116,7 +126,7 @@ public class Calendar {
                 tableView.append("|");
             }
             tableView.append(cells[i]);
-            if (DayOfWeek(this.day, this.month, this.year) == i % 7 && i / 7 == (this.day / 7)+1){
+            if (DayOfWeek(this.day, this.month, this.year) == i % 7 && i / 7 == (this.day / 7)+1 && this.month == m){
                 tableView.append("◄");
 //                tableView.append("┤");
             }else{

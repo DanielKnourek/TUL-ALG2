@@ -12,5 +12,11 @@ public class Main {
         Calendar calendar2 = Calendar.create(31,3,2020);
         System.out.println(calendar2.getCurrentDayOfWeek());
         System.out.println(calendar2.showCurrentMonth());
+        calendar2.previousMonth();
+        System.out.println(calendar2.showCurrentMonth());
+        calendar2.nextMonth();
+        calendar2.nextMonth();
+        calendar2.nextMonth();
+        System.out.println(calendar2.showCurrentMonth());
     }
 }
