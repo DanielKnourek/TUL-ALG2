@@ -1,0 +1,46 @@
+
+
+Version:	3.12
+CmdLine:	T:\Mùj disk\Personal\Java\SwingFun\out\artifacts\SwingFun.exe --l4j-debug
+WOW64:		yes
+Create mutex:	SwingFun
+Working dir:	T:\Mùj disk\Personal\Java\SwingFun\out\artifacts\.
+Java min ver:	1.007.000
+Java max ver:	
+64-bit search:	SOFTWARE\JavaSoft\Java Runtime Environment...
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.6
+Ignore:		1.006.000
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.6.0_45
+Ignore:		1.006.000_045
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.7
+Check launcher:	C:\Program Files\Java\jre7\bin\javaw.exe (OK)
+Match:		1.007.000
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.7.0_80
+Check launcher:	C:\Program Files\Java\jre7\bin\javaw.exe (OK)
+Match:		1.007.000_080
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8
+Check launcher:	C:\Program Files\Java\jre1.8.0_251\bin\javaw.exe (OK)
+Match:		1.008.000
+Check:		SOFTWARE\JavaSoft\Java Runtime Environment\1.8.0_251
+Check launcher:	C:\Program Files\Java\jre1.8.0_251\bin\javaw.exe (OK)
+Match:		1.008.000_251
+64-bit search:	SOFTWARE\JavaSoft\Java Development Kit...
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.6
+Ignore:		1.006.000
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.6.0_45
+Ignore:		1.006.000_045
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.7
+Ignore:		1.007.000
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.7.0_80
+Ignore:		1.007.000_080
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.8
+Ignore:		1.008.000
+Check:		SOFTWARE\JavaSoft\Java Development Kit\1.8.0_131
+Ignore:		1.008.000_131
+64-bit search:	SOFTWARE\JavaSoft\JRE...
+64-bit search:	SOFTWARE\JavaSoft\JDK...
+Runtime used:	1.008.000_251 (64-bit)
+Launcher:	C:\Program Files\Java\jre1.8.0_251\bin\javaw.exe
+Launcher args:	-jar "T:\Mùj disk\Personal\Java\SwingFun\out\artifacts\SwingFun.exe"
+Args length:	68/32768 chars
+Exit code:	0

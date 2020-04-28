@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SwingFun:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SwingFun_jar</output-path>
+    <root id="archive" name="SwingFun.jar">
+      <element id="module-output" name="restauraceAPP" />
+    </root>
+  </artifact>
+</component>
