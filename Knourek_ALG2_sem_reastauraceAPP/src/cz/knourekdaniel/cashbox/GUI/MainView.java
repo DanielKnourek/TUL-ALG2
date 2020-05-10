@@ -1,6 +1,7 @@
 package cz.knourekdaniel.cashbox.GUI;
 
 import cz.knourekdaniel.cashbox.GUI.Components.Menu;
+import cz.knourekdaniel.cashbox.Tools.Conf;
 import cz.knourekdaniel.cashbox.Tools.R;
 
 import javax.imageio.ImageIO;
@@ -26,7 +27,6 @@ private boolean shown = true;
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         frame.add(new Menu(200, 200));
 

@@ -1,13 +1,13 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
     <!-- Image paths -->
-    <!-- Default values -->
+    <!-- Default images -->
 
     <!-- Icons -->
     <entry key="icon_kazetko">#Assets/logo_Kazetko.png</entry>
 
 
     <!-- Banners -->
-    <entry key="banner_cookies">/cz/knourekdaniel/cashbox/Assets/cookies.png</entry>
-    <entry key="banner_cats">/cz/knourekdaniel/cashbox/Assets/cookies.png</entry>
+    <entry key="banner_cookies">#Assets/cookies.jpg</entry>
+    <entry key="banner_cats">cookies.png</entry>
 </properties>
