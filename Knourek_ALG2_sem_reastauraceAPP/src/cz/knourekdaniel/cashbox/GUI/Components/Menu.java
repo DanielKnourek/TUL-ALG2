@@ -1,4 +1,4 @@
-package cz.knourekdaniel.SwingFun.GUI.Components;
+package cz.knourekdaniel.cashbox.GUI.Components;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -17,7 +17,8 @@ public class Menu extends JPanel {
 
         //TODO TRY catch
         try {
-            this.bg = ImageIO.read(getClass().getResourceAsStream("/cz/knourekdaniel.SwingFun/Assets/cookies.jpg"));
+            this.bg = ImageIO.read(getClass().getResourceAsStream("/cz/knourekdaniel/cashbox/Assets/cookies.jpg"));
+//            this.bg = ImageIO.read(getClass().getResourceAsStream("/cz/knourekdaniel.SwingFun/Assets/cookies.jpg"));
         } catch (Exception e) {
             e.printStackTrace();
         }

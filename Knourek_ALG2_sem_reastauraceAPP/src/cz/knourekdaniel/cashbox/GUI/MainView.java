@@ -1,10 +1,10 @@
-package cz.knourekdaniel.SwingFun.GUI;
+package cz.knourekdaniel.cashbox.GUI;
 
-import cz.knourekdaniel.SwingFun.GUI.Components.Menu;
+import cz.knourekdaniel.cashbox.GUI.Components.Menu;
+import cz.knourekdaniel.cashbox.Tools.R;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import java.awt.*;
 import java.io.IOException;
 
 public class MainView {
@@ -14,6 +14,7 @@ private boolean shown = true;
 
     public MainView(){
 
+
         JFrame frame = new JFrame(this.name);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -21,7 +22,7 @@ private boolean shown = true;
         frame.setTitle("new Name");
 //        getClass().getClassLoader().getResource()
         try {
-            frame.setIconImage(ImageIO.read(getClass().getResourceAsStream("/cz/knourekdaniel/SwingFun/Assets/logo_Kazetko.png")));
+            frame.setIconImage(ImageIO.read(getClass().getResourceAsStream("/cz/knourekdaniel/cashbox/Assets/logo_Kazetko.png")));
         } catch (IOException e) {
             e.printStackTrace();
         }
