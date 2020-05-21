@@ -3,11 +3,12 @@
     <!-- Default values -->
     <!-- app settings -->
     <entry key="lang">česky</entry>
+    <!-- Specify logging option none/basic/all/ basic+imageloading -->
+    <entry key="logging">none</entry>
 
-    <!-- Image paths -->
-    <entry key="appicon">/cz/knourekdaniel/cashbox/Assets/cookies.png</entry>
-    <!-- Image extra -->
-    <entry key="propB">B</entry>
+    <!-- Database settings -->
+    <entry key="database-url">B</entry>
+    <!-- other extra -->
     <entry key="propC">C</entry>
     <entry key="propE">E</entry>
     <entry key="propF">F</entry>

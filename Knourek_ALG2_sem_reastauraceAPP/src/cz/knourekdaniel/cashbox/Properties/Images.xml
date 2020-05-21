@@ -4,10 +4,10 @@
     <!-- Default images -->
 
     <!-- Icons -->
-    <entry key="icon_kazetko">#Assets/logo_Kazetko.png</entry>
+    <entry key="icon-kazetko">#Assets/logo_Kazetko.png</entry>
 
 
     <!-- Banners -->
-    <entry key="banner_cookies">#Assets/cookies.jpg</entry>
-    <entry key="banner_cats">cookies.png</entry>
+    <entry key="banner-cookies">#Assets/cookies.jpg</entry>
+    <entry key="banner-cats">cookies.png</entry>
 </properties>

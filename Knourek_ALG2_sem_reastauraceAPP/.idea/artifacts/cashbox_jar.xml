@@ -3,6 +3,8 @@
     <output-path>$PROJECT_DIR$/out/artifacts/cashbox_jar</output-path>
     <root id="archive" name="cashbox.jar">
       <element id="module-output" name="cashbox" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/lib/h2.jar" path-in-jar="/" />
+      <element id="library" level="project" name="h2" />
     </root>
   </artifact>
 </component>

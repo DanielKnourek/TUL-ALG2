@@ -1,17 +1,33 @@
 package cz.knourekdaniel.cashbox.Tools;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-
+/**
+ * Public class containing reference on loaded configurations
+ *  - conf: Properties of main configurations.
+ *  - images: Properties of images filepaths.
+ */
 public class Conf {
-    public static final String appFolder = "#/cz/knourekdaniel/cashbox/";
     private static boolean initialized = false;
-    public static ConfigLoader conf ;
-//    = new ConfigLoader(Conf.appFolder + "Properties/","","Conf.xml");
-    public static ConfigLoader images ;
-//    = new ConfigLoader(Conf.appFolder + "Properties/","","Images.xml");
 
+    /**
+     * filepath to the package of Main.java
+     */
+    public static final String appFolder = "#/cz/knourekdaniel/cashbox/";
+
+    /**
+     * Properties of main configurations.
+     */
+    public static ConfigLoader conf ;
+
+    /**
+     * Properties of images filepaths.
+     */
+    public static ConfigLoader images ;
+
+    /**
+     * Assigns to all variables reference to property variables.
+     * Helps to launch loading configuration whenever necessary.
+     * Can be called only once.
+     */
     public static void load(){
         if (initialized){
             //TODO throw error
@@ -20,41 +36,5 @@ public class Conf {
         initialized = true;
         conf = new ConfigLoader(Conf.appFolder + "Properties/","","Conf.xml");
         images = new ConfigLoader(Conf.appFolder + "Properties/","","Images.xml");
-    }
-}
-
-class ConfigLoader extends Properties{
-    private String fileLocationLocal;
-    private String fileLocationApp;
-    public final Properties propApp = new Properties();
-
-    ConfigLoader(String fileLocationApp, String fileLocationLocal, String fileName){
-        this.fileLocationLocal = fileLocationLocal + fileName;
-        this.fileLocationApp = fileLocationApp + fileName;
-
-        this.propApp.putAll(CreateProperties(this.fileLocationApp));
-        this.putAll(this.propApp);
-        this.putAll(CreateProperties(this.fileLocationLocal));
-
-    }
-
-    ConfigLoader(String fileName){
-        this( Conf.appFolder,"", fileName);
-    }
-
-    private Properties CreateProperties(String fileLocation) {
-        Properties prop = new Properties();
-
-        try {
-            InputStream FiS = R.newFiS(fileLocation);
-            if (FiS != null){
-                prop.loadFromXML(FiS);
-                FiS.close();
-            }
-        } catch (IOException e) {
-            //TODO logging catch
-            e.printStackTrace();
-        }
-        return prop;
     }
 }
