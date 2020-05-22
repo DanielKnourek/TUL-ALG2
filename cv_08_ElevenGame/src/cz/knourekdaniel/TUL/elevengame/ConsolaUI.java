@@ -27,7 +27,10 @@ public class ConsolaUI {
         displayCards();
         while(board.anotherPlayIsPossible()){
             System.out.println("Vyběr karty:");
-            String[] selectedCards = sc.nextLine().split(" +"); //separator is one or more spaces
+            String[] selectedCards = sc.nextLine().split("\\+"); //separator is one or more spaces
+            for (int i = 0; i < selectedCards.length; i++) {
+                selectedCards[i] = selectedCards[i].trim();
+            }
             int[] iSelectedCards = toInt(selectedCards); //changes String positions to int indexes
             if (board.playAndReplace(iSelectedCards)){
                 displayDeck();
