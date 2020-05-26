@@ -6,7 +6,7 @@ import cz.knourekdaniel.cashbox.Items.Item;
 
 import java.util.HashMap;
 
-public class Overview {
+public class Overview implements ui_logic {
     static MainView app;
 
     private HashMap<Integer, Item> OrderedItemsMap = new HashMap<>();

@@ -1,11 +1,15 @@
 package cz.knourekdaniel.cashbox.App_UI;
 
+import cz.knourekdaniel.cashbox.App.Order;
 import cz.knourekdaniel.cashbox.App.Overview;
 import cz.knourekdaniel.cashbox.Items.Item;
+import cz.knourekdaniel.cashbox.Items.SortByCategoryThenName;
+import cz.knourekdaniel.cashbox.Items.SortByPriceThenName;
 import cz.knourekdaniel.cashbox.Tools.R;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.*;
@@ -14,7 +18,7 @@ import java.util.HashMap;
 public class Order_View extends ViewMaster {
     private JPanel MainPanel;
     private JTextField SearchBar;
-    private JButton button1;
+    private JButton btn_restart;
     private JScrollPane TableScrollPane;
     private JPanel ContentPanel;
     private JTable ItemTable;
@@ -44,6 +48,13 @@ public class Order_View extends ViewMaster {
             @Override
             public void actionPerformed(ActionEvent e) {
                 addToList(1);
+            }
+        });
+
+        btn_restart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Order.start();
             }
         });
 
@@ -141,11 +152,14 @@ public class Order_View extends ViewMaster {
         DefaultTableModel TableModel = new DefaultTableModel(colNames, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                //all cells false
                 return false;
             }
+
         };
         this.ItemTable.setModel(TableModel);
+        TableRowSorter tableRowSorter = new TableRowSorter(ItemTable.getModel());
+        tableRowSorter.setComparator(6, new SortByCategoryThenName(false));
+        tableRowSorter.setComparator(2, new SortByPriceThenName(true));
     }
 
     private void setPreferredColumnWidth(int... values) {

@@ -2,7 +2,7 @@ package cz.knourekdaniel.cashbox.App_UI;
 
 import cz.knourekdaniel.cashbox.App.Order;
 import cz.knourekdaniel.cashbox.Items.Item;
-import cz.knourekdaniel.cashbox.Tools.Recipe;
+import cz.knourekdaniel.cashbox.App.Recipe;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

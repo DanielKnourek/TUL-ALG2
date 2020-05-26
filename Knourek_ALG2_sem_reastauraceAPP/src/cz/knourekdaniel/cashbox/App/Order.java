@@ -7,7 +7,7 @@ import cz.knourekdaniel.cashbox.Tools.R;
 
 import java.util.Arrays;
 
-public class Order {
+public class Order implements ui_logic {
     static MainView app;
 
     public static void start() {

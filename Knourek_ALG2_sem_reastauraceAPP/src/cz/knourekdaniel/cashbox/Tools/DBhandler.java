@@ -9,7 +9,7 @@ import java.util.ServiceLoader;
 //DBpath= D:\School\TUL\TUL\1_ZS_ALG2\Knourek_ALG2_sem_reastauraceAPP\out\artifacts\cashbox_jar
 
 public class DBhandler{
-    private String dbURL_Data = "jdbc:h2:file:./data/data";;
+    private String dbURL = "jdbc:h2:file:";;
     private String DBsuperUser = "su";
     private String DBpassword = "nN4b^YvJT5Vx=8Bt";
     private Connection conn;
@@ -18,8 +18,9 @@ public class DBhandler{
     public  DBhandler(){
         try {
             Class.forName ("org.h2.Driver");
+            String dbURL_Data = this.dbURL +"./"+ Conf.conf.get("database-url");
 
-            this.conn = DriverManager.getConnection(this.dbURL_Data, this.DBsuperUser, this.DBpassword);
+            this.conn = DriverManager.getConnection(dbURL_Data, this.DBsuperUser, this.DBpassword);
             this.stmt = conn.createStatement();
 
         } catch (SQLException | ClassNotFoundException e) {

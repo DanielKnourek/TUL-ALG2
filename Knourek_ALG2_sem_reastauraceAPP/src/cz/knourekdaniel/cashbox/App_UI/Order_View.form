@@ -43,11 +43,11 @@
                     </properties>
                     <border type="none"/>
                     <children>
-                      <component id="fe63a" class="javax.swing.JButton" binding="button1" default-binding="true">
+                      <component id="fe63a" class="javax.swing.JButton" binding="btn_restart">
                         <constraints/>
                         <properties>
                           <focusable value="false"/>
-                          <text value="Button"/>
+                          <text value="Smazat vše"/>
                         </properties>
                       </component>
                       <component id="c792c" class="javax.swing.JToolBar$Separator">

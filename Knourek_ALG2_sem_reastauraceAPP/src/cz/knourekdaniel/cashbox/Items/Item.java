@@ -88,7 +88,7 @@ public abstract class Item extends Object implements Cloneable {
     }
 
     public Object[] asArray(){
-        return new Object[]{String.format("%06d",id), Name, Price, DPH};
+        return new Object[]{String.format("%06d",id), Name, Price, qty, unit, DPH, category};
     }
 
     public static void setColNames(String[] colNames){
@@ -117,7 +117,7 @@ public abstract class Item extends Object implements Cloneable {
 //        return out.toString();
         //TODO remove prinln
 //        System.out.println(String.format("|%30s  %5.2f x %5.2f   %3d|", Name, count, Price, DPH));
-        return String.format("%10s %25s  %5.2fx %5.2f  %3d%%", (qty+unit), Name, count, Price, DPH);
+        return String.format("%9s %25s  %5.2fx %5.2f  %3d%%", (qty+unit), Name, count, Price, DPH);
     }
 
 
