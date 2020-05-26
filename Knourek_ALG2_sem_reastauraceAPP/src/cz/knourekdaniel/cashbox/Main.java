@@ -1,6 +1,7 @@
 package cz.knourekdaniel.cashbox;
 
-import cz.knourekdaniel.cashbox.GUI.MainView;
+import cz.knourekdaniel.cashbox.App.Order;
+import cz.knourekdaniel.cashbox.App_UI.MainView;
 import cz.knourekdaniel.cashbox.Tools.Conf;
 import cz.knourekdaniel.cashbox.Tools.DBhandler;
 import cz.knourekdaniel.cashbox.Tools.R;
@@ -17,7 +18,7 @@ public class Main {
         Conf.load();
         R.load();
 //        DBhandler dbtest = new DBhandler();
-        MainView.start();
+        Order.start();
     }
 
 }

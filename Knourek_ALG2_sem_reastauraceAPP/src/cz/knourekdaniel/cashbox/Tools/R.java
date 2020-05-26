@@ -1,5 +1,6 @@
 package cz.knourekdaniel.cashbox.Tools;
 
+import cz.knourekdaniel.cashbox.Items.Item;
 import cz.knourekdaniel.cashbox.Main;
 
 import java.awt.*;
@@ -13,10 +14,13 @@ import java.io.InputStream;
 public class R {
     private static boolean initialized = false;
 
+
+
     /**
      * Hashmap of loaded images.
      */
     public static ResourceHandler<Image> img;
+    public static ResourceHandler<Item> item;
 
 
     /**
@@ -30,7 +34,8 @@ public class R {
             return;
         }
         initialized = true;
-        img = ResourceHandler.<ImageLoader>callLoader();
+        img = ResourceHandler.callLoader("ImageLoader");
+        item = ResourceHandler.callLoader("ItemLoader");
     }
 
     /**

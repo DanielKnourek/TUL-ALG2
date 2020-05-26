@@ -34,7 +34,7 @@ public class Conf {
             return;
         }
         initialized = true;
-        conf = new ConfigLoader(Conf.appFolder + "Properties/","","Conf.xml");
-        images = new ConfigLoader(Conf.appFolder + "Properties/","","Images.xml");
+        conf = new ConfigLoader(Conf.appFolder + "Assets/Properties/","data/","Conf.xml");
+        images = new ConfigLoader(Conf.appFolder + "Assets/Properties/","","Images.xml");
     }
 }
