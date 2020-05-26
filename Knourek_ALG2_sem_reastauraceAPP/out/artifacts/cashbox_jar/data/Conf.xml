@@ -1,12 +1,9 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<!-- Default values -->
     <!-- app settings -->
     <entry key="lang">česky</entry>
+    <entry key="facility-name">Kázetko</entry>
 
-    <!-- Image paths -->
-    <entry key="appicon">/cz/knourekdaniel/cashbox/Assets/cookies.png</entry>
-    <!-- Image extra -->
-    <entry key="propF">FFFF</entry>
-    <entry key="new">newprop</entry>
+
+    <entry key="database-url">data/data</entry>
 </properties>

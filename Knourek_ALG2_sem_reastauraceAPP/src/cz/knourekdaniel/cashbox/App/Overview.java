@@ -20,7 +20,7 @@ public class Overview implements ui_logic {
     }
 
     public static void setVisible(){
-        app.OVERVIEW_VIEW.UpdateOrderedItemsMap(app.ORDER_VIEW.getOrderedItemsMap());
+        app.OVERVIEW_VIEW.setOrderedItemsMap(app.ORDER_VIEW.getOrderedItemsMap());
 
         app.OVERVIEW_VIEW.Update();
         app.changeTo(app.OVERVIEW_VIEW);

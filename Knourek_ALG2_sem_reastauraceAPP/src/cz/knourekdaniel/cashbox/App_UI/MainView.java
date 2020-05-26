@@ -1,5 +1,6 @@
 package cz.knourekdaniel.cashbox.App_UI;
 
+import cz.knourekdaniel.cashbox.Tools.Conf;
 import cz.knourekdaniel.cashbox.Tools.R;
 
 import javax.swing.*;
@@ -13,7 +14,7 @@ public class MainView {
     public JPanel activePane;
 
     public JFrame frame;
-    private String name = "Cashbox Kázetko";
+    private String name = "Cashbox";
     private boolean shown = true;
 
     public MainView() {
@@ -29,6 +30,9 @@ public class MainView {
 
         this.frame.setSize(1280,768);
         this.frame.setIconImage(R.img.get("icon-kazetko"));
+
+        this.name = "Cashbox "+ Conf.conf.get("facility-name");
+        this.frame.setTitle(this.name);
 
         this.activePane = new JPanel();
         frame.add(this.activePane);
@@ -52,5 +56,15 @@ public class MainView {
             MainView.app = new MainView();
         }
         return MainView.app;
+    }
+
+    public void exitError(String errorMessage){
+        exitError(errorMessage, false);
+    }
+    public void exitError(String errorMessage,boolean exit){
+        JOptionPane.showMessageDialog(null,errorMessage);
+        if (exit){
+            app.frame.dispose();
+        }
     }
 }

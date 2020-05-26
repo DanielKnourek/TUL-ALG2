@@ -68,7 +68,7 @@ public class Overview_View extends ViewMaster{
         RecipeExample.setText(this.recipe.toString());
     }
 
-    public void UpdateOrderedItemsMap(HashMap<Integer, Item> OrderedItemsMap){
+    public void setOrderedItemsMap(HashMap<Integer, Item> OrderedItemsMap){
         this.OrderedItemsMap = OrderedItemsMap;
     }
 
@@ -87,7 +87,7 @@ public class Overview_View extends ViewMaster{
         try {
             recipe.save();
         } catch (IOException ex) {
-            JOptionPane.showMessageDialog(null, "Ukládání selhalo!");
+            MainView.app.exitError("Ukládání selhalo!");
         }
     }
 }

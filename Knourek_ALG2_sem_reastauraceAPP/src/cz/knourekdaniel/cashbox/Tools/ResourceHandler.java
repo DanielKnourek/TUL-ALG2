@@ -1,5 +1,6 @@
 package cz.knourekdaniel.cashbox.Tools;
 
+import cz.knourekdaniel.cashbox.App_UI.MainView;
 import cz.knourekdaniel.cashbox.Items.Beverage;
 import cz.knourekdaniel.cashbox.Items.Item;
 import cz.knourekdaniel.cashbox.Items.Meal;
@@ -68,7 +69,6 @@ class ImageLoader extends ResourceHandler<Image> {
         if (img_404 == null){
             img_404 = LoadImage(Conf.appFolder + "Assets/404.png");
         }
-        //TODO remove
         this.put("404",img_404);
         Conf.images.forEach((key, file) -> this.put((String) key,LoadImage((String)file)) );
 
@@ -89,7 +89,8 @@ class ImageLoader extends ResourceHandler<Image> {
                 img = img_404;
             }
         } catch (IOException e) {
-            //TODO logging catch
+
+            MainView.app.exitError("Neočekávaná chyba při čtení souboru", false);
             e.printStackTrace();
 
         }
@@ -139,7 +140,8 @@ class ItemLoader extends ResourceHandler<Item>{
                 this.put(rs.getString("ID"), item);
             }
         } catch (SQLException e) {
-            //TODO log
+
+            MainView.app.exitError("Neočekávaná chyba při čtení databáze", true);
             e.printStackTrace();
         }
     }

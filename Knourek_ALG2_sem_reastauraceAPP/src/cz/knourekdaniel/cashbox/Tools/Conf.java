@@ -1,5 +1,7 @@
 package cz.knourekdaniel.cashbox.Tools;
 
+import cz.knourekdaniel.cashbox.App_UI.MainView;
+
 /**
  * Public class containing reference on loaded configurations
  *  - conf: Properties of main configurations.
@@ -30,7 +32,8 @@ public class Conf {
      */
     public static void load(){
         if (initialized){
-            //TODO throw error
+
+            MainView.app.exitError("Chyba při běhu programu: Conf already loaded", false);
             return;
         }
         initialized = true;

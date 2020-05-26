@@ -17,6 +17,7 @@ public class Order implements ui_logic {
         app.ORDER_VIEW = new Order_View();
         LoadToTable();
 
+
         setVisible();
     }
 

@@ -1,6 +1,8 @@
 package cz.knourekdaniel.cashbox.Tools;
 
 
+import cz.knourekdaniel.cashbox.App_UI.MainView;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
@@ -43,7 +45,8 @@ public class ConfigLoader extends Properties {
                 FiS.close();
             }
         } catch (IOException e) {
-            //TODO logging catch
+
+            MainView.app.exitError("Neočekávaná chyba při čtení souboru", false);
             e.printStackTrace();
         }
         return prop;

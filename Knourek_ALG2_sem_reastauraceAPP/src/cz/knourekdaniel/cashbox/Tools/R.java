@@ -1,5 +1,6 @@
 package cz.knourekdaniel.cashbox.Tools;
 
+import cz.knourekdaniel.cashbox.App_UI.MainView;
 import cz.knourekdaniel.cashbox.Items.Item;
 import cz.knourekdaniel.cashbox.Main;
 
@@ -30,7 +31,8 @@ public class R {
      */
     public static void load(){
         if (initialized){
-            //TODO throw error
+
+            MainView.app.exitError("Neočekávaná chyba při čtení souboru", false);
             return;
         }
         initialized = true;
@@ -60,7 +62,8 @@ public class R {
                 FiS = new FileInputStream(filepath);
             }
         } catch (Exception e) {
-            //TODO log exeption
+
+            MainView.app.exitError("Neočekávaná chyba při čtení souboru", false);
 //            e.printStackTrace();
         }
         return FiS;

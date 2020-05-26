@@ -1,5 +1,7 @@
 package cz.knourekdaniel.cashbox.Items;
 
+import cz.knourekdaniel.cashbox.App_UI.MainView;
+
 public abstract class Item extends Object implements Cloneable {
 
     private static String[] colNames;
@@ -103,7 +105,7 @@ public abstract class Item extends Object implements Cloneable {
         try {
             return (Item) super.clone();
         } catch (CloneNotSupportedException e) {
-            //TODO log
+            MainView.app.exitError("Neočekávaná chyba: Item_clone", true);
             e.printStackTrace();
         }
         return this;
@@ -112,11 +114,6 @@ public abstract class Item extends Object implements Cloneable {
 
     @Override
     public String toString() {
-//        StringBuilder out = new StringBuilder();
-//        out.append(this.Name);
-//        return out.toString();
-        //TODO remove prinln
-//        System.out.println(String.format("|%30s  %5.2f x %5.2f   %3d|", Name, count, Price, DPH));
         return String.format("%9s %25s  %5.2fx %5.2f  %3d%%", (qty+unit), Name, count, Price, DPH);
     }
 

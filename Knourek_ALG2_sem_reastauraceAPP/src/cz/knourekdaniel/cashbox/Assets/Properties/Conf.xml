@@ -3,6 +3,7 @@
     <!-- Default values -->
     <!-- app settings -->
     <entry key="lang">česky</entry>
+    <entry key="facility-name">U Vodníka</entry>
     <!-- WIP Specify logging option none/basic/all/ basic+imageloading -->
     <entry key="logging">none</entry>
 

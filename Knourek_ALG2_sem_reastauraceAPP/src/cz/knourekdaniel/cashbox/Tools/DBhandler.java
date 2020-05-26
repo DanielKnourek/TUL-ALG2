@@ -1,12 +1,9 @@
 package cz.knourekdaniel.cashbox.Tools;
 
-import java.sql.*;
-import java.util.ServiceLoader;
+import cz.knourekdaniel.cashbox.App_UI.MainView;
+import cz.knourekdaniel.cashbox.Main;
 
-//DBsuperUser= su
-//DBpassword= nN4b^YvJT5Vx=8Bt
-//DBpath= jdbc:h2:D:\School\TUL\TUL\1_ZS_ALG2\Knourek_ALG2_sem_reastauraceAPP\out\artifacts\cashbox_jar\data
-//DBpath= D:\School\TUL\TUL\1_ZS_ALG2\Knourek_ALG2_sem_reastauraceAPP\out\artifacts\cashbox_jar
+import java.sql.*;
 
 public class DBhandler{
     private String dbURL = "jdbc:h2:file:";;
@@ -24,8 +21,8 @@ public class DBhandler{
             this.stmt = conn.createStatement();
 
         } catch (SQLException | ClassNotFoundException e) {
-            //TODO catch
             e.printStackTrace();
+            MainView.app.exitError("Nelze se připojit k databázi", true);
         }
     }
 

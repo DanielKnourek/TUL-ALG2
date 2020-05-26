@@ -9,10 +9,13 @@ import cz.knourekdaniel.cashbox.Tools.R;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 
 public class Order_View extends ViewMaster {
@@ -41,9 +44,17 @@ public class Order_View extends ViewMaster {
 
         addListeners();
 
+
+
     }
 
     private void addListeners() {
+        SearchBar.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                filter(SearchBar.getText());
+            }
+        });
         btn_Add.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -166,11 +177,14 @@ public class Order_View extends ViewMaster {
         for (int i = 0; i < values.length && i < ItemTable.getColumnModel().getColumnCount(); i++) {
             this.ItemTable.getColumnModel().getColumn(i).setPreferredWidth(values[i]);
 
+
         }
     }
 
     void addToList(double amount) {
-        int index = ItemTable.getRowSorter().convertRowIndexToModel(ItemTable.getSelectedRow());
+        int rowIndex = ItemTable.getSelectedRow();
+        if (rowIndex <0){ return;}
+        int index = ItemTable.getRowSorter().convertRowIndexToModel(rowIndex);
         Item entry = R.item.get(Integer.parseInt(this.ItemTable.getModel().getValueAt(index, 0).toString())+"");
         if (OrderedItemsMap.putIfAbsent(entry.getId(), entry.clone()) != null) {
             OrderedItemsMap.get(entry.getId()).addCount(amount);
@@ -182,6 +196,21 @@ public class Order_View extends ViewMaster {
         OrderedItemsMap.forEach((key, item) -> List.addElement(item.toString()));
         OrderedItems.setModel(List);
 
+    }
+
+    void filter(String query){
+        StringBuilder editedquery = new StringBuilder();
+        //^(?=.*one)(?=.*two)(?=.*three).*$ regex example for "one two three"
+        editedquery.append("^");
+        String[] queryArr = query.split(" ");
+        for (String s : queryArr) {
+            editedquery.append("(?=.*").append(s).append(")");
+        }
+        editedquery.append(".*$");
+
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>((DefaultTableModel) ItemTable.getModel());
+        ItemTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(editedquery.toString()));
     }
 
 }

@@ -1,6 +1,7 @@
 package cz.knourekdaniel.cashbox.App;
 
 import cz.knourekdaniel.cashbox.Items.Item;
+import cz.knourekdaniel.cashbox.Tools.Conf;
 
 import javax.swing.*;
 import java.io.BufferedWriter;
@@ -12,7 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 
 public class Recipe {
-    private static final String name = "Restaurace Kázetko";
+    private String name = "Restaurace";
     private HashMap<Integer, Item> OrderedItemsMap = new HashMap<>();
     private double TotalPrice = 0;
 
@@ -20,6 +21,7 @@ public class Recipe {
     public Recipe(HashMap<Integer, Item> OrderedItemsMap) {
         this.OrderedItemsMap = OrderedItemsMap;
 
+        this.name = this.name +" "+ Conf.conf.get("facility-name");
     }
 
     public Recipe(Item... items) {
