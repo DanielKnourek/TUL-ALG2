@@ -12,6 +12,10 @@ public class DBhandler{
     private Connection conn;
     private Statement stmt;
 
+    /**
+     * creates connection to the database specified in Conf.xml
+     * accessed by Conf.conf.get("database-url")
+     */
     public  DBhandler(){
         try {
             Class.forName ("org.h2.Driver");
@@ -26,11 +30,21 @@ public class DBhandler{
         }
     }
 
+    /**
+     * Safely closes statement and connection to the database.
+     * @throws SQLException
+     */
     public void close() throws SQLException {
         this.stmt.close();
         this.conn.close();
     }
 
+    /**
+     * Execute your SQL query and returns result set with answer provided by database
+     * @param SQLquery basic SQL querry
+     * @return ResultSet
+     * @throws SQLException
+     */
     public ResultSet executeQuery(String SQLquery) throws SQLException {
         return this.stmt.executeQuery(SQLquery);
     }
@@ -38,6 +52,12 @@ public class DBhandler{
         return this.stmt.executeUpdate(SQLquery);
     }
 
+    /**
+     * Helps to create SQL select statement of desired table and columns
+     * @param table String name of table
+     * @param cols Array of string with names of columns
+     * @return
+     */
     public static String getSelectSQL(String table, String... cols){
 //        "SELECT ID, NAME, PRICE, QTY, UNIT, DPH, CATEGORY, DESCRIPTION, KEYWORDS from ITEMS"
         StringBuilder sql = new StringBuilder();

@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.HashMap;
 
-public class Overview_View extends ViewMaster{
+public class Overview_View extends View {
     private JPanel ContentPanel;
     private JButton btn_back;
     private JList OrderedItems;
@@ -80,10 +80,11 @@ public class Overview_View extends ViewMaster{
 
     }
 
-    private void newOrder(){
+    public void newOrder(){
         Order.start();
     }
-    private void saveOrder(){
+
+    public void saveOrder(){
         try {
             recipe.save();
         } catch (IOException ex) {

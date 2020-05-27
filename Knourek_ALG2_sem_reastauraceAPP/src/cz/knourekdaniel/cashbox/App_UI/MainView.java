@@ -5,6 +5,10 @@ import cz.knourekdaniel.cashbox.Tools.R;
 
 import javax.swing.*;
 
+/**
+ * Class that creates JFrame and handles changing different Views of View type
+ * Always access as MainView.app.
+ */
 public class MainView {
 
     public static MainView app;
@@ -17,7 +21,7 @@ public class MainView {
     private String name = "Cashbox";
     private boolean shown = true;
 
-    public MainView() {
+    private MainView() {
         createFrame();
 
         frame.setVisible(this.shown);
@@ -42,7 +46,11 @@ public class MainView {
         this.frame.setTitle(this.name +" - "+ title);
     }
 
-    public void changeTo(ViewMaster view) {
+    /**
+     * Changes App's main panel to specified view of type View.
+     * @param view desired view to be shown.
+     */
+    public void changeTo(View view) {
         this.frame.remove(this.activePane);
         this.activePane = view.getMainPanel();
         this.frame.add(this.activePane);
@@ -50,7 +58,9 @@ public class MainView {
         this.frame.repaint();
     }
 
-
+    /**
+     * @return returns instance of MainView if not present it is created.
+     */
     public static MainView start() {
         if( app == null){
             MainView.app = new MainView();
@@ -58,9 +68,19 @@ public class MainView {
         return MainView.app;
     }
 
+    /**
+     * Show basic alert window with specified message.
+     * @param errorMessage message inside alert popup window.
+     */
     public void exitError(String errorMessage){
         exitError(errorMessage, false);
     }
+
+    /**
+     * Show basic alert window with specified message.
+     * @param errorMessage message inside alert popup window.
+     * @param exit if true app will close after showing message.
+     */
     public void exitError(String errorMessage,boolean exit){
         JOptionPane.showMessageDialog(null,errorMessage);
         if (exit){

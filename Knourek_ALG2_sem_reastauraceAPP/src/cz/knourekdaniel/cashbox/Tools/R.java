@@ -62,8 +62,6 @@ public class R {
                 FiS = new FileInputStream(filepath);
             }
         } catch (Exception e) {
-
-            MainView.app.exitError("Neočekávaná chyba při čtení souboru", false);
 //            e.printStackTrace();
         }
         return FiS;

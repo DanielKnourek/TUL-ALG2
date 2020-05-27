@@ -9,16 +9,12 @@ import cz.knourekdaniel.cashbox.Tools.R;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
-import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 
-public class Order_View extends ViewMaster {
+public class Order_View extends View {
     private JPanel MainPanel;
     private JTextField SearchBar;
     private JButton btn_restart;
@@ -31,6 +27,7 @@ public class Order_View extends ViewMaster {
     private JButton btn_continue;
 
     private HashMap<Integer, Item> OrderedItemsMap = new HashMap<>();
+    private int SelectedRow = 0;
 
     public HashMap<Integer, Item> getOrderedItemsMap() {
         return OrderedItemsMap;
@@ -80,34 +77,7 @@ public class Order_View extends ViewMaster {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                switch (e.getKeyCode()) {
-                    case KeyEvent.VK_PLUS:
-                    case KeyEvent.VK_ENTER:
-                        addToList(1);
-                        break;
-                    case KeyEvent.VK_MINUS:
-                    case KeyEvent.VK_DELETE:
-                        addToList(-1);
-                        break;
-                    case KeyEvent.VK_DOWN:
-                        if (ItemTable.getSelectedRows()[0] < ItemTable.getRowCount()-1){
-                            ItemTable.setRowSelectionInterval(
-                                    ItemTable.getSelectedRow()+1,
-                                    ItemTable.getSelectedRow()+1);
-                        }
-                        break;
-                    case KeyEvent.VK_UP:
-                        if (ItemTable.getSelectedRows()[0] > 0){
-                            ItemTable.setRowSelectionInterval(
-                                    ItemTable.getSelectedRow()-1,
-                                    ItemTable.getSelectedRow()-1);
-                        }
-                        break;
-
-                    default:
-
-                        break;
-                }
+                KeyboardClick(e.getKeyCode());
             }
         });
 
@@ -133,6 +103,44 @@ public class Order_View extends ViewMaster {
                 SearchBar.requestFocus();
             }
         });
+    }
+
+    public void KeyboardClick(int keyCode) {
+
+        switch (keyCode) {
+            case KeyEvent.VK_PLUS:
+            case KeyEvent.VK_ENTER:
+                addToList(1);
+                break;
+            case KeyEvent.VK_MINUS:
+            case KeyEvent.VK_DELETE:
+                addToList(-1);
+                break;
+            case KeyEvent.VK_DOWN:
+                if (SelectedRow < ItemTable.getRowCount()-1){
+                    this.SelectedRow++;
+                    ItemTable.setRowSelectionInterval(
+                            SelectedRow,
+                            SelectedRow);
+                }else{
+                    ItemTable.setRowSelectionInterval(ItemTable.getRowCount()-1,ItemTable.getRowCount()-1);
+                }
+                break;
+            case KeyEvent.VK_UP:
+                if (SelectedRow > 0){
+                    this.SelectedRow--;
+                    ItemTable.setRowSelectionInterval(
+                            SelectedRow,
+                            SelectedRow);
+                }else{
+                    ItemTable.setRowSelectionInterval(0,0);
+                }
+                break;
+
+            default:
+
+                break;
+        }
     }
 
     @Override
@@ -168,6 +176,7 @@ public class Order_View extends ViewMaster {
 
         };
         this.ItemTable.setModel(TableModel);
+
         TableRowSorter tableRowSorter = new TableRowSorter(ItemTable.getModel());
         tableRowSorter.setComparator(6, new SortByCategoryThenName(false));
         tableRowSorter.setComparator(2, new SortByPriceThenName(true));
@@ -176,12 +185,10 @@ public class Order_View extends ViewMaster {
     private void setPreferredColumnWidth(int... values) {
         for (int i = 0; i < values.length && i < ItemTable.getColumnModel().getColumnCount(); i++) {
             this.ItemTable.getColumnModel().getColumn(i).setPreferredWidth(values[i]);
-
-
         }
     }
 
-    void addToList(double amount) {
+    public void addToList(double amount) {
         int rowIndex = ItemTable.getSelectedRow();
         if (rowIndex <0){ return;}
         int index = ItemTable.getRowSorter().convertRowIndexToModel(rowIndex);
@@ -198,7 +205,7 @@ public class Order_View extends ViewMaster {
 
     }
 
-    void filter(String query){
+    public void filter(String query){
         StringBuilder editedquery = new StringBuilder();
         //^(?=.*one)(?=.*two)(?=.*three).*$ regex example for "one two three"
         editedquery.append("^");
